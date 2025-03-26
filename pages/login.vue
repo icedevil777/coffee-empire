@@ -1,11 +1,11 @@
 <template>
     <div class="login-main">
         <div class="login-form">
-            <h2>Sing in</h2>
+            <h2 style="margin-top: 0px;">Sing in</h2>
             <p style="margin-bottom: 10px;">Welcome to <span style="color: #c11e44;">web site</span></p>
-            <p>username</p>
+            <span>username</span>
             <input placeholder="username" type="text" />
-            <p>password</p>
+            <span>password</span>
             <input placeholder="password" type="password" />
             <button class="login-btn">Sing in</button>
         </div>
@@ -28,7 +28,7 @@
   background-color: $secondary;
   margin: auto;
   border-radius: 16px;
-  padding: 40px; 
+  padding: 30px; 
   display: flex;
   flex-direction: column;
   gap: 5px;
