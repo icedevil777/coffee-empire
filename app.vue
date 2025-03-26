@@ -1,4 +1,5 @@
 <template>
-  <div>main app page</div>
   <NuxtPage />
 </template>
+
+<script lang="ts"></script>
