@@ -1,3 +1,25 @@
 body {
   background-color: $primary;
+  font-family: Roboto,sans-serif;
 }
+
+h2 {
+  color: #dcdcdc;
+  line-height: 40px;
+  font-weight: 900;
+  font-size: 24px;
+}
+
+p {
+  color: #dcdcdc;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  margin: 0;
+}
+
+input, button {
+  border-radius: 8px;
+  padding: 5px;
+}
+
