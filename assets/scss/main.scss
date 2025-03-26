@@ -1,35 +1,40 @@
 body {
   background-color: $primary;
   font-family: Roboto,sans-serif;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 24px;
+ 
 }
 
 h2 {
   color: #dcdcdc;
-  line-height: 40px;
+  line-height: 50px;
   font-weight: 900;
-  font-size: 24px;
+  font-size: 32px;
 }
 
 p {
   color: #dcdcdc;
-  font-size: 16px;
+  font-size: 24px;
   font-weight: 500;
-  line-height: 24px;
+  line-height: 32px;
   margin: 0;
 }
 
 input, button {
-  border-radius: 8px;
-  padding: 5px;
+  border-radius: 12px;
+  padding: 5px 10px;
   border: none;
   outline: none;
+  height: 20px !important;
 }
 
 
 span {
   color: #dcdcdc;
-  font-size: 12px;
   font-weight: 400;
+  font-size: 16px;
   line-height: 16px;
   margin: 0;
 }

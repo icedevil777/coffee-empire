@@ -2,7 +2,7 @@
     <div class="login-main">
         <div class="login-form">
             <h2 style="margin-top: 0px;">Sing in</h2>
-            <p style="margin-bottom: 10px;">Welcome to <span style="color: #c11e44;">web site</span></p>
+            <p style="margin-bottom: 10px;">Welcome to <a style="color: #c11e44; ">Web site</a></p>
             <span>username</span>
             <input placeholder="username" type="text" />
             <span>password</span>
@@ -28,19 +28,20 @@
   background-color: $secondary;
   margin: auto;
   border-radius: 16px;
-  padding: 30px; 
+  padding: 50px 40px; 
   display: flex;
+  width: 300px;
   flex-direction: column;
-  gap: 5px;
+  gap: 10px;
 }
 
 .login-btn{
     background-color: $red;
     color: white;
-    border-radius: 24px;
-    margin-top: 20px;
+    margin-top: 30px;
     border: none;
     cursor: pointer;
-    padding: 5px;
+    padding: 1px;
+    height: 30px !important;
 }
 </style>
