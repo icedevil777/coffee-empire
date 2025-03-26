@@ -35,7 +35,7 @@
   gap: 10px;
 }
 
-.login-btn{
+.login-btn {
     background-color: $red;
     color: white;
     margin-top: 30px;
@@ -43,5 +43,9 @@
     cursor: pointer;
     padding: 1px;
     height: 30px !important;
+}
+
+.login-btn:hover {
+    opacity: 85%;
 }
 </style>
