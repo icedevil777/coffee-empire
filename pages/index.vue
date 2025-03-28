@@ -6,13 +6,12 @@ definePageMeta({
 });
 
 async function logout() {
-  await clearSession()
-  await navigateTo('/login')
+  await clearSession();
+  await navigateTo('/login');
 }
 
-const { user, clear: clearSession } = useUserSession()
+const { user, clear: clearSession } = useUserSession();
 </script>
-
 
 <template>
   <div>
@@ -21,7 +20,4 @@ const { user, clear: clearSession } = useUserSession()
   </div>
 
   <div style="color: white">index page {{ store.users }}</div>
-
-
 </template>
-

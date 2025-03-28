@@ -1,6 +1,6 @@
 import usersData from './users.json';
 import { defineStore } from 'pinia';
-import md5 from 'md5'
+import md5 from 'md5';
 
 interface Credentials {
   username: string;
