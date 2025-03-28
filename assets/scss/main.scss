@@ -1,33 +1,15 @@
+@use 'reset';
+
 body {
   background-color: $primary;
   font-family: Roboto, sans-serif;
-  font-size: 16px;
-  font-weight: 300;
+}
+
+h3 {
+  color: #dcdcdc;
   line-height: 24px;
-}
-
-h2 {
-  color: #dcdcdc;
-  line-height: 50px;
   font-weight: 900;
-  font-size: 32px;
-}
-
-p {
-  color: #dcdcdc;
   font-size: 24px;
-  font-weight: 500;
-  line-height: 32px;
-  margin: 0;
-}
-
-input,
-button {
-  border-radius: 8px;
-  padding: 5px 10px;
-  border: none;
-  outline: none;
-  height: 24px !important;
 }
 
 span {
@@ -35,5 +17,29 @@ span {
   font-weight: 400;
   font-size: 16px;
   line-height: 16px;
-  margin: 0;
+}
+
+.text-1 {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+  color: #dcdcdc;
+}
+
+.text-2 {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  color: #dcdcdc;
+}
+
+.text-3 {
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 24px;
+  color: #dcdcdc;
+}
+
+input::placeholder {
+  color: white;
 }

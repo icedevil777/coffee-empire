@@ -21,16 +21,23 @@ async function login() {
 </script>
 
 <template>
-  <div class="login-main">
+  <div class="login-page">
     <form @submit.prevent="login" class="login-form">
-      <h2 style="margin-top: 0px">Sing in</h2>
-      <p>Welcome to <a style="color: #c11e44">Web site </a></p>
-      <span class="login-form__error-massage" :class="{ 'login-form__error-massage-red': isError }">Bad credentials!</span>
-      <span>email</span>
-      <input v-model="credentials.email" placeholder="email" type="email" />
-      <span>password</span>
-      <input v-model="credentials.password" placeholder="password" type="password" />
-      <button type="submit" class="login-form__btn login-form__btn-red">Sing in</button>
+      <h3>Sign in</h3>
+      <p class="text-3">Welcome to test project </p>
+
+      <div class="login-form__div">
+        <label class="login-form__label text-1">Email <label class="login-form__error-massage" :class="{ 'login-form__error-massage-red': isError }">Bad credentials</label></label>
+        <input class="login-form__el text-1" placeholder="Email" v-model="credentials.email" type="email" />
+      </div>
+
+      <div class="login-form__div">
+        <label class="login-form__label text-1">Password</label>
+        <input class="login-form__el text-1" placeholder="Password" v-model="credentials.password" type="password" />
+      </div>
+
+
+      <button type="submit" class="login-form__el login-form__btn text-2">Sing in</button>
     </form>
   </div>
 </template>
@@ -38,7 +45,7 @@ async function login() {
 <style scoped lang="scss">
 @import url('~/assets/scss/main.scss');
 
-.login-main {
+.login-page {
   display: flex;
   width: 100%;
   height: 90vh;
@@ -49,24 +56,38 @@ async function login() {
   background-color: $secondary;
   margin: auto;
   border-radius: 16px;
-  padding: 50px 40px;
+  padding: 40px 30px;
   display: flex;
   width: 300px;
   flex-direction: column;
-  gap: 12px;
+  gap: 30px;}
+
+.login-form__el {
+  background-color: $secondary;
+  height: 50px;
+  border: solid $secondary-light 1px;
+  padding: 0 10px 0 10px;
+  border-radius: 5px;
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+}
+.login-form__el:focus {
+  border-color: $red;
 }
 
 .login-form__btn {
-  margin-top: 30px;
-  border: none;
+  margin-top: 20px;
+  border: none !important;
   cursor: pointer;
-  padding: 1px;
-  height: 34px !important;
-}
-
-.login-form__btn-red {
   background-color: $red;
   color: white;
+  border-radius: 10px;
+}
+
+input::placeholder {
+  color: $secondary-light;
+  
 }
 
 .login-form__btn:hover {
@@ -75,7 +96,7 @@ async function login() {
 
 .login-form__error-massage {
   color: $secondary;
-  align-self: flex-start;
+  float: right;
 }
 
 .login-form__error-massage-red {
