@@ -1,36 +1,37 @@
 <script setup lang="ts">
-// const { data } = await useFetch('/api/login')
-// const username = defineModel('username')
-const username = defineModel({ default: 'david.jones@creds.com' });
-const password = defineModel('password');
+const { loggedIn, user, fetch: refreshSession } = useUserSession();
+const credentials = reactive({
+  email: 'david.jones@creds.com',
+  password: '8u3&s-1uda',
+});
 
-async function handleFormSubmit() {
-  try {
-    const res = await $fetch('/api/login', {
-      method: 'POST',
-      body: {
-        username: username.value,
-        password: password.value,
-      },
-    });
-    console.log('res', res);
-  } catch (e) {
-    console.log('error e', e);
-  }
+const isError = ref(false);
+
+async function login() {
+  $fetch('/api/login', {
+    method: 'POST',
+    body: credentials,
+  })
+    .then(async () => {
+      await refreshSession();
+      await navigateTo('/');
+    })
+    .catch(() => (isError.value = true));
 }
 </script>
 
 <template>
   <div class="login-main">
-    <div class="login-form">
+    <form @submit.prevent="login" class="login-form">
       <h2 style="margin-top: 0px">Sing in</h2>
-      <p style="margin-bottom: 10px">Welcome to <a style="color: #c11e44">Web site </a></p>
-      <span>username</span>
-      <input v-model="username" placeholder="username" type="text" />
+      <p>Welcome to <a style="color: #c11e44">Web site </a></p>
+      <span class="login-form__error-massage" :class="{ 'login-form__error-massage-red': isError }">Bad credentials!</span>
+      <span>email</span>
+      <input v-model="credentials.email" placeholder="email" type="email" />
       <span>password</span>
-      <input v-model="password" placeholder="password" type="password" />
-      <button @click="handleFormSubmit()" class="login-form__btn login-form__btn-red">Sing in</button>
-    </div>
+      <input v-model="credentials.password" placeholder="password" type="password" />
+      <button type="submit" class="login-form__btn login-form__btn-red">Sing in</button>
+    </form>
   </div>
 </template>
 
@@ -52,7 +53,7 @@ async function handleFormSubmit() {
   display: flex;
   width: 300px;
   flex-direction: column;
-  gap: 10px;
+  gap: 12px;
 }
 
 .login-form__btn {
@@ -70,5 +71,14 @@ async function handleFormSubmit() {
 
 .login-form__btn:hover {
   opacity: 85%;
+}
+
+.login-form__error-massage {
+  color: $secondary;
+  align-self: flex-start;
+}
+
+.login-form__error-massage-red {
+  color: $red;
 }
 </style>

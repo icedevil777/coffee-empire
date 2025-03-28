@@ -12,15 +12,19 @@
   },
   "dependencies": {
     "@pinia/nuxt": "^0.10.1",
+    "@types/md5": "^2.3.5",
     "eslint": "^9.23.0",
     "eslint-config-prettier": "^10.1.1",
     "eslint-plugin-nuxt": "^4.0.0",
     "eslint-plugin-prettier": "^5.2.5",
+    "md5": "^2.3.0",
     "nuxt": "^3.16.1",
+    "nuxt-auth-utils": "^0.5.17",
     "pinia": "^3.0.1",
     "scss": "^0.2.4",
     "vue": "^3.5.13",
-    "vue-router": "^4.5.0"
+    "vue-router": "^4.5.0",
+    "zod": "^3.24.2"
   },
   "devDependencies": {
     "@nuxtjs/stylelint-module": "^5.2.1",
