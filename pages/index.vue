@@ -1,19 +1,27 @@
-<template>
-  <div style="color: white">index page {{ store.users }}</div>
-</template>
-
 <script setup lang="ts">
 const store = useAuthStore();
 
 definePageMeta({
-  middleware: 'authenticated',
+  middleware: ['authenticated'],
 });
 
-const { loggedIn, session, user, clear, fetch } = useUserSession();
+async function logout() {
+  await clearSession()
+  await navigateTo('/login')
+}
 
-console.log('loggedIn', loggedIn);
-console.log('session', session);
-console.log('user', user);
-console.log('clear', clear);
-console.log('fetch', fetch);
+const { user, clear: clearSession } = useUserSession()
 </script>
+
+
+<template>
+  <div>
+    <h2>Welcome {{ user.name }}</h2>
+    <button @click="logout">Logout</button>
+  </div>
+
+  <div style="color: white">index page {{ store.users }}</div>
+
+
+</template>
+
