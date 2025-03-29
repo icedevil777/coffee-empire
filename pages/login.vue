@@ -21,13 +21,13 @@ async function login() {
 </script>
 
 <template>
-  <div class="login-page">
+  <div class="login-page"> 
     <form @submit.prevent="login" class="login-form">
-      <h3>Sign in</h3>
+      <h3>Sign in {{ isError }}</h3>
       <p class="text-3">Welcome to test project</p>
 
-      <div class="login-form__div">
-        <label class="login-form__label text-1">Email <label class="login-form__error-massage" :class="{ 'login-form__error-massage-red': isError }">Bad credentials</label></label>
+      <div class="login-form__div" >
+        <label class="login-form__label text-1">Email <label class="login-form__error-message login-form__error-message-red" >Bad credentials</label></label>
         <input class="login-form__el text-1" placeholder="Email" v-model="credentials.email" type="email" />
       </div>
 
@@ -60,21 +60,25 @@ async function login() {
   width: 300px;
   flex-direction: column;
   gap: 25px;
+
+  .login-form__div {
+    .login-form__el {
+      background-color: $main;
+      height: 40px;
+      border: solid $light 1px;
+      padding: 0 12px 0 10px;
+      border-radius: 5px;
+      display: block;
+      width: 100%;
+      box-sizing: border-box;
+
+      &:focus {
+        border-color: $red;
+      }
+    }
+  }
 }
 
-.login-form__el {
-  background-color: $main;
-  height: 40px;
-  border: solid $light 1px;
-  padding: 0 12px 0 10px;
-  border-radius: 5px;
-  display: block;
-  width: 100%;
-  box-sizing: border-box;
-}
-.login-form__el:focus {
-  border-color: $red;
-}
 
 .login-form__btn {
   margin-top: 20px;
@@ -83,6 +87,7 @@ async function login() {
   background-color: $red;
   color: white;
   border-radius: 10px;
+  height: 40px;
 }
 
 input::placeholder {
@@ -93,12 +98,24 @@ input::placeholder {
   opacity: 85%;
 }
 
-.login-form__error-massage {
+.login-form__error-message {
   color: $main;
   float: right;
 }
 
-.login-form__error-massage-red {
+.login-form__error-message-red {
   color: $red;
 }
+
+.shake-animation {
+  animation: shake 0.5s ease-in-out;
+  animation-fill-mode: forwards;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+  20%, 40%, 60%, 80% { transform: translateX(5px); }
+}
+
 </style>
