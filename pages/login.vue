@@ -52,7 +52,7 @@ async function login() {
 }
 
 .login-form {
-  background-color: $secondary;
+  background-color: $main;
   margin: auto;
   border-radius: 16px;
   padding: 40px 30px;
@@ -63,9 +63,9 @@ async function login() {
 }
 
 .login-form__el {
-  background-color: $secondary;
+  background-color: $main;
   height: 40px;
-  border: solid $secondary-light 1px;
+  border: solid $light 1px;
   padding: 0 12px 0 10px;
   border-radius: 5px;
   display: block;
@@ -86,7 +86,7 @@ async function login() {
 }
 
 input::placeholder {
-  color: $secondary-light;
+  color: $light;
 }
 
 .login-form__btn:hover {
@@ -94,7 +94,7 @@ input::placeholder {
 }
 
 .login-form__error-massage {
-  color: $secondary;
+  color: $main;
   float: right;
 }
 

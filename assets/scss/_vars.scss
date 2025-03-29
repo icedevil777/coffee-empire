@@ -1,10 +1,16 @@
 // Colors
-$primary: #121212;
-$secondary: #2e2e2e;
-$secondary-light: #767676;
+$dark: #121212;
+$main: #2e2e2e;
+$light: #767676;
 $red: #c11e44;
+$white: rgb(240 231 231);
 
 // Fonts
 $font-accent: 'Playfair Display', serif;
 $font-external: 'Roboto', sans-serif;
 $font-main: 'Raleway', sans-serif;
+
+// Elements
+$footer-h: 60px;
+$header-h: 60px;
+$main-h: calc(100vh - $header-h - $footer-h);
