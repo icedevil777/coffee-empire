@@ -24,7 +24,7 @@ async function login() {
   <div class="login-page">
     <form @submit.prevent="login" class="login-form">
       <h3>Sign in</h3>
-      <p class="text-3">Welcome to test project </p>
+      <p class="text-3">Welcome to test project</p>
 
       <div class="login-form__div">
         <label class="login-form__label text-1">Email <label class="login-form__error-massage" :class="{ 'login-form__error-massage-red': isError }">Bad credentials</label></label>
@@ -35,7 +35,6 @@ async function login() {
         <label class="login-form__label text-1">Password</label>
         <input class="login-form__el text-1" placeholder="Password" v-model="credentials.password" type="password" />
       </div>
-
 
       <button type="submit" class="login-form__el login-form__btn text-2">Sing in</button>
     </form>
@@ -60,13 +59,14 @@ async function login() {
   display: flex;
   width: 300px;
   flex-direction: column;
-  gap: 30px;}
+  gap: 25px;
+}
 
 .login-form__el {
   background-color: $secondary;
-  height: 50px;
+  height: 40px;
   border: solid $secondary-light 1px;
-  padding: 0 10px 0 10px;
+  padding: 0 12px 0 10px;
   border-radius: 5px;
   display: block;
   width: 100%;
@@ -87,7 +87,6 @@ async function login() {
 
 input::placeholder {
   color: $secondary-light;
-  
 }
 
 .login-form__btn:hover {
