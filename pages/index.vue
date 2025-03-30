@@ -24,14 +24,20 @@ const { data } = await useFetch('/api/users');
   <main class="main">
     <div class="container grid-content">
       <div class="grid-el">
+        <div class="grid-el__sub">Id</div>
         <div class="grid-el__sub">Name</div>
-        <div class="grid-el__sub">Surname name</div>
+        <div class="grid-el__sub">Surname</div>
         <div class="grid-el__sub">Email</div>
+        <div class="grid-el__sub">Status</div>
+        <div class="grid-el__sub">Created</div>
       </div>
       <div v-if="data.users" class="grid-el" v-for="user in data.users">
+        <div class="grid-el__sub">{{ user.id }}</div>
         <div class="grid-el__sub">{{ user.name }}</div>
         <div class="grid-el__sub">{{ user.surname }}</div>
         <div class="grid-el__sub">{{ user.credentials.username }}</div>
+        <div class="grid-el__sub">{{ user.status }}</div>
+        <div class="grid-el__sub">{{ user.created }}</div>
       </div>
     </div>
   </main>
@@ -89,15 +95,15 @@ footer {
   color: $white;
   display: grid;
   grid-template-rows: repeat(auto, 1fr);
-  gap: 30px;
+  gap: 10px;
   @include roboto;
 }
 
 .grid-el {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: 50px repeat(2, 1fr) 300px repeat(2, 1fr);
   border-bottom: solid $light 1px;
-  height: 30px;
+  // height: 30px;
 }
 
 .logo {

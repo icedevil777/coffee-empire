@@ -8,10 +8,11 @@ interface Credentials {
 }
 
 interface User {
+  id: number;
   name: string;
   surname: string;
   credentials: Credentials;
-  active: boolean;
+  status: string;
   created: string;
   _comment: string;
 }
