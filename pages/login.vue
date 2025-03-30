@@ -21,13 +21,12 @@ async function login() {
 </script>
 
 <template>
-  <div class="login-page"> 
+  <div class="login-page">
     <form @submit.prevent="login" class="login-form">
       <h3>Sign in {{ isError }}</h3>
       <p class="text-3">Welcome to test project</p>
-
-      <div class="login-form__div" >
-        <label class="login-form__label text-1">Email <label class="login-form__error-message login-form__error-message-red" >Bad credentials</label></label>
+      <div class="login-form__div">
+        <label class="login-form__label text-1">Email <label class="login-form__error-message login-form__error-message_red">Bad credentials</label></label>
         <input class="login-form__el text-1" placeholder="Email" v-model="credentials.email" type="email" />
       </div>
 
@@ -79,7 +78,6 @@ async function login() {
   }
 }
 
-
 .login-form__btn {
   margin-top: 20px;
   border: none !important;
@@ -103,7 +101,7 @@ input::placeholder {
   float: right;
 }
 
-.login-form__error-message-red {
+.login-form__error-message_red {
   color: $red;
 }
 
@@ -113,9 +111,22 @@ input::placeholder {
 }
 
 @keyframes shake {
-  0%, 100% { transform: translateX(0); }
-  10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
-  20%, 40%, 60%, 80% { transform: translateX(5px); }
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  10%,
+  30%,
+  50%,
+  70%,
+  90% {
+    transform: translateX(-5px);
+  }
+  20%,
+  40%,
+  60%,
+  80% {
+    transform: translateX(5px);
+  }
 }
-
 </style>

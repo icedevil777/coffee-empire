@@ -18,7 +18,7 @@ interface User {
 
 const users: Array<User> = usersData;
 
-export const useAuthStore = defineStore('authStore', {
+export const useMainStore = defineStore('mainStore', {
   state: () => ({
     users: users,
   }),

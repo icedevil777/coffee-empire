@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const store = useAuthStore();
+const { user, clear: clearSession } = useUserSession();
 
 definePageMeta({
   middleware: ['authenticated'],
@@ -10,24 +10,37 @@ async function logout() {
   await navigateTo('/login');
 }
 
-const { user, clear: clearSession } = useUserSession();
+
+const { data } = await useFetch('/api/users')
+
 </script>
 
 <template>
   <header class="header">
     <h1 class="header__el">Header</h1>
-  </header>
-  <main class="main">
-    <div class="main__container">
-      <h2>Welcome {{ user.name }}</h2>
-      <button @click="logout">Logout</button>
+    <div class="header__el">
+      <a class="header__username footer__el_my-tg ">{{ user.name }}</a>
+      <button class="header__logout" @click="logout">Log out</button>
     </div>
 
-    <div style="color: white">index page {{ store.users }}</div>
+  </header>
+  <main class="main">
+    <div class="container">
+      <div class="content">
+        <h2 class="content__title">User List</h2>
+        <div class="content__row">{{ data.users[0] }}</div>
+        <div class="content__row">{{ data.users[1] }}</div>
+        <div class="content__row">{{ data.users[2] }}</div>
+      </div>
+
+    </div>
+
+
   </main>
 
   <footer class="footer">
     <h1 class="footer__el">Footer</h1>
+    <a href="https://telegram.im/icedevil777" class="footer__el footer__el_my-tg">Григорий Гуляев</a>
   </footer>
 </template>
 
@@ -43,11 +56,35 @@ footer {
   width: 100%;
   background-color: $main;
   height: $header-h;
+  padding: 0 40px 0 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .header__username {
+    margin-right: 50px;
+  }
+  .header__logout {
+    background-color: $red;
+    width: 100px;
+    height: 30px;
+    border-radius: 8px;
+  }
 }
 
 .header__el,
 .footer__el {
   color: $white;
-  padding: 20px 20px;
+}
+
+.footer__el_my-tg {
+  cursor: pointer;
+  &:hover {
+    color: $red;
+  }
+}
+
+.content {
+  display: grid;
 }
 </style>

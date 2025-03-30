@@ -1,9 +1,9 @@
-import { useAuthStore } from '~/stores/authStore';
+import { useMainStore } from '~/stores/mainStore';
 import { createPinia } from 'pinia';
 import { z } from 'zod';
 
 const pinia = createPinia();
-const store = useAuthStore(pinia);
+const store = useMainStore(pinia);
 const bodySchema = z.object({
   email: z.string().email(),
   password: z.string().min(8),
