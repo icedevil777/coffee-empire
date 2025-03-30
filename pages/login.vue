@@ -6,6 +6,7 @@ const credentials = reactive({
 });
 
 const isError = ref(false);
+const formRef = ref<HTMLFormElement>();
 
 async function login() {
   $fetch('/api/login', {
@@ -16,17 +17,24 @@ async function login() {
       await refreshSession();
       await navigateTo('/');
     })
-    .catch(() => (isError.value = true));
+    .catch(() => {
+      isError.value = true;
+      formRef.value?.classList.add('shake-animation');
+      setTimeout(() => {
+        formRef.value?.classList.remove('shake-animation');
+        isError.value = false;
+      }, 1000);
+    });
 }
 </script>
 
 <template>
   <div class="login-page">
-    <form @submit.prevent="login" class="login-form">
+    <form ref="formRef" @submit.prevent="login" class="login-form">
       <h3 class="login-form__title">Sign in</h3>
       <p class="text-3">Welcome to test project</p>
       <div class="login-form__div">
-        <label class="login-form__label text-1">Email <label class="login-form__error-message login-form__error-message_red">Bad credentials</label></label>
+        <label class="login-form__label text-1">Email <label :class="{'login-form__error-message_red': isError}" class="login-form__error-message">Bad credentials</label></label>
         <input class="login-form__el text-1" placeholder="Email" v-model="credentials.email" type="email" />
       </div>
 
@@ -108,31 +116,9 @@ input::placeholder {
 }
 
 .login-form__error-message_red {
-  color: $red;
+  color: $red !important;
+
+  @include raleway;
 }
 
-.shake-animation {
-  animation: shake 0.5s ease-in-out;
-  animation-fill-mode: forwards;
-}
-
-@keyframes shake {
-  0%,
-  100% {
-    transform: translateX(0);
-  }
-  10%,
-  30%,
-  50%,
-  70%,
-  90% {
-    transform: translateX(-5px);
-  }
-  20%,
-  40%,
-  60%,
-  80% {
-    transform: translateX(5px);
-  }
-}
 </style>
