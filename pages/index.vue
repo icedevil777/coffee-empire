@@ -28,7 +28,7 @@ const { data } = await useFetch('/api/users');
         <div class="grid-el__sub">Surname name</div>
         <div class="grid-el__sub">Email</div>
       </div>
-      <div class="grid-el" v-for="user in data.users">
+      <div v-if="data.users" class="grid-el" v-for="user in data.users">
         <div class="grid-el__sub">{{ user.name }}</div>
         <div class="grid-el__sub">{{ user.surname }}</div>
         <div class="grid-el__sub">{{ user.credentials.username }}</div>

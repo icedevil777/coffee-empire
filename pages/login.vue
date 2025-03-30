@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const { loggedIn, user, fetch: refreshSession } = useUserSession();
+const { fetch: refreshSession } = useUserSession();
 const credentials = reactive({
   email: 'david.jones@creds.com',
   password: '8u3&s-1uda',
@@ -32,18 +32,16 @@ async function login() {
   <div class="login-page">
     <form ref="formRef" @submit.prevent="login" class="login-form">
       <h3 class="login-form__title">Sign in</h3>
-      <p class="text-3">Welcome to test project</p>
+      <p class="login-form__subtitle">Welcome to test project</p>
       <div class="login-form__div">
-        <label class="login-form__label text-1">Email <label :class="{'login-form__error-message_red': isError}" class="login-form__error-message">Bad credentials</label></label>
-        <input class="login-form__el text-1" placeholder="Email" v-model="credentials.email" type="email" />
+        <label class="login-form__label">Email <label :class="{ 'login-form__error-message_red': isError }" class="login-form__error-message">Bad credentials</label></label>
+        <input class="login-form__el" placeholder="Email" v-model="credentials.email" type="email" />
       </div>
-
       <div class="login-form__div">
-        <label class="login-form__label text-1">Password</label>
-        <input class="login-form__el text-1" placeholder="Password" v-model="credentials.password" type="password" />
+        <label class="login-form__label">Password</label>
+        <input class="login-form__el" placeholder="Password" v-model="credentials.password" type="password" />
       </div>
-
-      <button type="submit" class="login-form__el login-form__btn text-2">Sing in</button>
+      <button class="login-form__el login-form__btn" type="submit" >Sing in</button>
     </form>
   </div>
 </template>
@@ -68,11 +66,11 @@ async function login() {
 
   @include roboto;
 
-  .login-form__title {
+  &__title {
     @include playfair;
   }
 
-  .login-form__div {
+  &__div {
     .login-form__el {
       background-color: $main;
       height: 40px;
@@ -88,6 +86,17 @@ async function login() {
       }
     }
   }
+
+  &__error-message {
+    color: $main;
+    float: right;
+  }
+
+  &__error-message_red {
+    color: $red !important;
+
+    @include raleway;
+  }
 }
 
 .login-form__btn {
@@ -100,25 +109,7 @@ async function login() {
   height: 40px;
 }
 
-input::placeholder {
-  color: $light;
-
-  @include raleway;
-}
-
 .login-form__btn:hover {
   opacity: 85%;
 }
-
-.login-form__error-message {
-  color: $main;
-  float: right;
-}
-
-.login-form__error-message_red {
-  color: $red !important;
-
-  @include raleway;
-}
-
 </style>
