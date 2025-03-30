@@ -41,7 +41,7 @@ async function login() {
         <label class="login-form__label">Password</label>
         <input class="login-form__el" placeholder="Password" v-model="credentials.password" type="password" />
       </div>
-      <button class="login-form__el login-form__btn" type="submit" >Sing in</button>
+      <button class="login-form__el login-form__btn" type="submit">Sing in</button>
     </form>
   </div>
 </template>
@@ -97,19 +97,19 @@ async function login() {
 
     @include raleway;
   }
-}
 
-.login-form__btn {
-  margin-top: 20px;
-  border: none !important;
-  cursor: pointer;
-  background-color: $red;
-  color: white;
-  border-radius: 10px;
-  height: 40px;
-}
+  &__btn {
+    margin-top: 20px;
+    border: none !important;
+    cursor: pointer;
+    background-color: $red;
+    color: white;
+    border-radius: 10px;
+    height: 40px;
 
-.login-form__btn:hover {
-  opacity: 85%;
+    &:hover {
+      opacity: 85%;
+    }
+  }
 }
 </style>
