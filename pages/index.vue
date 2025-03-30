@@ -15,7 +15,7 @@ const { data } = await useFetch('/api/users');
 
 <template>
   <header class="header">
-    <h1 class="header__el">Header</h1>
+    <h1 class="header__el logo">Header</h1>
     <div class="header__el">
       <a class="header__username footer__el_my-tg">{{ user.name }}</a>
       <button class="header__logout" @click="logout">Log out</button>
@@ -37,14 +37,12 @@ const { data } = await useFetch('/api/users');
   </main>
 
   <footer class="footer">
-    <h1 class="footer__el">Footer</h1>
+    <h1 class="footer__el logo">Footer</h1>
     <a href="https://telegram.im/icedevil777" class="footer__el footer__el_my-tg">Григорий Гуляев</a>
   </footer>
 </template>
 
 <style scoped lang="scss">
-@import url('~/assets/scss/main.scss');
-
 .main {
   height: $main-h;
   display: flex;
@@ -75,7 +73,6 @@ footer {
 .header__el,
 .footer__el {
   color: $white;
-  // @include playfair;
 }
 
 .footer__el_my-tg {
@@ -93,6 +90,7 @@ footer {
   display: grid;
   grid-template-rows: repeat(auto, 1fr);
   gap: 30px;
+  @include roboto;
 }
 
 .grid-el {
@@ -100,5 +98,9 @@ footer {
   grid-template-columns: repeat(3, 1fr);
   border-bottom: solid $light 1px;
   height: 30px;
+}
+
+.logo {
+  @include playfair;
 }
 </style>

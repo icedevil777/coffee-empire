@@ -23,7 +23,7 @@ async function login() {
 <template>
   <div class="login-page">
     <form @submit.prevent="login" class="login-form">
-      <h3>Sign in {{ isError }}</h3>
+      <h3 class="login-form__title">Sign in</h3>
       <p class="text-3">Welcome to test project</p>
       <div class="login-form__div">
         <label class="login-form__label text-1">Email <label class="login-form__error-message login-form__error-message_red">Bad credentials</label></label>
@@ -41,8 +41,6 @@ async function login() {
 </template>
 
 <style scoped lang="scss">
-@import url('~/assets/scss/main.scss');
-
 .login-page {
   display: flex;
   width: 100%;
@@ -59,6 +57,12 @@ async function login() {
   width: 300px;
   flex-direction: column;
   gap: 25px;
+
+  @include roboto;
+
+  .login-form__title {
+    @include playfair;
+  }
 
   .login-form__div {
     .login-form__el {
@@ -90,6 +94,8 @@ async function login() {
 
 input::placeholder {
   color: $light;
+
+  @include raleway;
 }
 
 .login-form__btn:hover {

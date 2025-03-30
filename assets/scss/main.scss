@@ -1,42 +1,11 @@
 @use 'reset';
+@use 'mixins' as *;
 @import 'https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Raleway:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap';
-
-@mixin fonts {
-  font-optical-sizing: auto;
-  font-style: normal;
-  color: $white;
-}
-
-@mixin playfair {
-  @include fonts;
-
-  font-family: $font-accent;
-  font-weight: 500;
-  font-size: 34px;
-  line-height: 35px;
-}
-
-@mixin raleway {
-  @include fonts;
-
-  font-family: $font-main;
-  font-weight: 300;
-  font-size: 12px;
-}
-
-@mixin roboto {
-  @include fonts;
-
-  font-family: $font-external;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 25px;
-}
 
 body {
   background-color: $dark;
 
-  @include roboto;
+  @include raleway;
 }
 
 .container {
@@ -59,6 +28,10 @@ span {
   line-height: 16px;
 }
 
-input::placeholder {
-  color: white;
+input {
+  @include raleway;
+
+  ::placeholder {
+    color: white;
+  }
 }
