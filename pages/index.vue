@@ -25,16 +25,33 @@ const { data } = await useFetch('/api/users');
     <div class="grid-content">
       <div class="filter">
         <div class="filter__div">
-          <label class="login-form__label">Search</label>
+          <label class="filter__label">Search</label>
           <input class="filter__search" placeholder="Name, email, surname ..." />
         </div>
         <div class="filter__div">
-
+          <label class="filter__label" for="filter__select">Status</label>
+          <select class="filter__select" id="filter__select">
+            <option value="">All</option>
+            <option value="confirmed">Confirmed</option>
+            <option value="payed">Payed</option>
+            <option value="active">Active</option>
+          </select>
         </div>
         <div class="filter__div">
-        
+          <label class="filter__label" for="filter__select">Id</label>
+          <select class="filter__select" id="filter__select">
+            <option value="">All</option>
+            <option v-for="i, key in data.users"  :value="key + 1" >{{ key + 1}}</option>
+          </select>
+        </div>
+        <div class="filter__div">
+          <label class="filter__label filter__label_hide">1</label>
+          <button class="filter__clear" type="button" >Clear</button>
         </div>
       </div>
+
+      <div class="line"></div>
+
       <div class="grid-el">
         <div class="grid-el__sub">Id</div>
         <div class="grid-el__sub">Name</div>
@@ -109,7 +126,7 @@ footer {
   color: $white;
   display: grid;
   grid-template-rows: repeat(auto, 1fr);
-  gap: 10px;
+  gap: 15px;
   @include roboto;
 }
 
@@ -124,20 +141,50 @@ footer {
   @include playfair;
 }
 
+.line {
+  border-top: solid $white 1px;
+  margin-bottom: 5px;
+}
+
 .filter {
   background-color: $main;
-  height: 80px;
   width: 100%;
-  border: solid red 1px;
-  margin-bottom: 10px;
   display: flex;
-
+  justify-content: space-between;
 
   &__search {
     @include input-mix;
 
     &:focus {
       border-color: $red;
+    }
+  }
+
+  &__div {
+    display: flex;
+    flex-direction: column;
+    min-width: 200px;
+  }
+
+  &__select {
+    @include input-mix;
+    cursor: pointer;
+
+    &:focus {
+      border-color: $red;
+    }
+  }
+
+  &__label_hide{
+    color: $main;
+  }
+
+  &__clear {
+    @include input-mix;
+    @include btn-mix;
+
+    &:hover {
+      opacity: 85%;
     }
   }
 }

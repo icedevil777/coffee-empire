@@ -94,12 +94,9 @@ async function login() {
   }
 
   &__btn {
+
+    @include btn-mix;
     margin-top: 20px;
-    border: none !important;
-    cursor: pointer;
-    background-color: $red;
-    color: white;
-    border-radius: 10px;
     height: 40px;
 
     &:hover {
