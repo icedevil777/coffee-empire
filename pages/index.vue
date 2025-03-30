@@ -10,34 +10,30 @@ async function logout() {
   await navigateTo('/login');
 }
 
-
-const { data } = await useFetch('/api/users')
-
+const { data } = await useFetch('/api/users');
 </script>
 
 <template>
   <header class="header">
     <h1 class="header__el">Header</h1>
     <div class="header__el">
-      <a class="header__username footer__el_my-tg ">{{ user.name }}</a>
+      <a class="header__username footer__el_my-tg">{{ user.name }}</a>
       <button class="header__logout" @click="logout">Log out</button>
     </div>
-
   </header>
   <main class="main">
-      <div class="container grid-content">
+    <div class="container grid-content">
       <div class="grid-el">
         <div class="grid-el__sub">Name</div>
         <div class="grid-el__sub">Surname name</div>
         <div class="grid-el__sub">Email</div>
       </div>
-      <div class="grid-el" v-for="user in data.users" >
-        <div class="grid-el__sub" >{{ user.name }} </div>
-        <div class="grid-el__sub" >{{ user.surname }} </div>
-        <div class="grid-el__sub" > {{ user.credentials.username }} </div>
+      <div class="grid-el" v-for="user in data.users">
+        <div class="grid-el__sub">{{ user.name }}</div>
+        <div class="grid-el__sub">{{ user.surname }}</div>
+        <div class="grid-el__sub">{{ user.credentials.username }}</div>
       </div>
-      </div>
-      
+    </div>
   </main>
 
   <footer class="footer">
@@ -79,6 +75,7 @@ footer {
 .header__el,
 .footer__el {
   color: $white;
+  // @include playfair;
 }
 
 .footer__el_my-tg {
@@ -95,7 +92,7 @@ footer {
   color: $white;
   display: grid;
   grid-template-rows: repeat(auto, 1fr);
-  gap:30px;
+  gap: 30px;
 }
 
 .grid-el {
@@ -104,6 +101,4 @@ footer {
   border-bottom: solid $light 1px;
   height: 30px;
 }
-
-
 </style>

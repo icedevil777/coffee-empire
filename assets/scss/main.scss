@@ -1,31 +1,42 @@
 @use 'reset';
 @import 'https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Raleway:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap';
 
-.playfair, .raleway, .roboto {
+@mixin fonts {
   font-optical-sizing: auto;
   font-style: normal;
   color: $white;
-
 }
 
-.playfair {
+@mixin playfair {
+  @include fonts;
+
   font-family: $font-accent;
   font-weight: 500;
+  font-size: 34px;
+  line-height: 35px;
 }
 
-.raleway {
+@mixin raleway {
+  @include fonts;
+
   font-family: $font-main;
   font-weight: 300;
+  font-size: 12px;
 }
 
-.roboto {
+@mixin roboto {
+  @include fonts;
+
   font-family: $font-external;
   font-weight: 400;
+  font-size: 16px;
+  line-height: 25px;
 }
 
 body {
   background-color: $dark;
-  font-family: $font-main;
+
+  @include roboto;
 }
 
 .container {
@@ -47,27 +58,6 @@ span {
   font-size: 16px;
   line-height: 16px;
 }
-
-// .text-1 {
-//   font-size: 14px;
-//   font-weight: 600;
-//   line-height: 20px;
-//   color: #dcdcdc;
-// }
-
-// .text-2 {
-//   font-size: 16px;
-//   font-weight: 400;
-//   line-height: 24px;
-//   color: #dcdcdc;
-// }
-
-// .text-3 {
-//   font-size: 18px;
-//   font-weight: 500;
-//   line-height: 24px;
-//   color: #dcdcdc;
-// }
 
 input::placeholder {
   color: white;
