@@ -72,14 +72,9 @@ async function login() {
 
   &__div {
     .login-form__el {
-      background-color: $main;
-      height: 40px;
-      border: solid $light 1px;
-      padding: 0 12px 0 10px;
-      border-radius: 5px;
-      display: block;
       width: 100%;
-      box-sizing: border-box;
+
+      @include input-mix;
 
       &:focus {
         border-color: $red;

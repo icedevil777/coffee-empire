@@ -21,8 +21,20 @@ const { data } = await useFetch('/api/users');
       <button class="header__logout" @click="logout">Log out</button>
     </div>
   </header>
-  <main class="main">
-    <div class="container grid-content">
+  <main class="main container">
+    <div class="grid-content">
+      <div class="filter">
+        <div class="filter__div">
+          <label class="login-form__label">Search</label>
+          <input class="filter__search" placeholder="Name, email, surname ..." />
+        </div>
+        <div class="filter__div">
+
+        </div>
+        <div class="filter__div">
+        
+        </div>
+      </div>
       <div class="grid-el">
         <div class="grid-el__sub">Id</div>
         <div class="grid-el__sub">Name</div>
@@ -52,7 +64,9 @@ const { data } = await useFetch('/api/users');
 .main {
   height: $main-h;
   display: flex;
+  flex-direction: column;
   align-items: center;
+  justify-content: center;
 }
 
 .header,
@@ -108,5 +122,23 @@ footer {
 
 .logo {
   @include playfair;
+}
+
+.filter {
+  background-color: $main;
+  height: 80px;
+  width: 100%;
+  border: solid red 1px;
+  margin-bottom: 10px;
+  display: flex;
+
+
+  &__search {
+    @include input-mix;
+
+    &:focus {
+      border-color: $red;
+    }
+  }
 }
 </style>
