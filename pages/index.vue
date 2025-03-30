@@ -25,17 +25,19 @@ const { data } = await useFetch('/api/users')
 
   </header>
   <main class="main">
-    <div class="container">
-      <div class="content">
-        <h2 class="content__title">User List</h2>
-        <div class="content__row">{{ data.users[0] }}</div>
-        <div class="content__row">{{ data.users[1] }}</div>
-        <div class="content__row">{{ data.users[2] }}</div>
+      <div class="container grid-content">
+      <div class="grid-el">
+        <div class="grid-el__sub">Name</div>
+        <div class="grid-el__sub">Surname name</div>
+        <div class="grid-el__sub">Email</div>
       </div>
-
-    </div>
-
-
+      <div class="grid-el" v-for="user in data.users" >
+        <div class="grid-el__sub" >{{ user.name }} </div>
+        <div class="grid-el__sub" >{{ user.surname }} </div>
+        <div class="grid-el__sub" > {{ user.credentials.username }} </div>
+      </div>
+      </div>
+      
   </main>
 
   <footer class="footer">
@@ -49,6 +51,8 @@ const { data } = await useFetch('/api/users')
 
 .main {
   height: $main-h;
+  display: flex;
+  align-items: center;
 }
 
 .header,
@@ -84,7 +88,22 @@ footer {
   }
 }
 
-.content {
+.grid-content {
+  padding: 30px;
+  border-radius: 30px;
+  background-color: $main;
+  color: $white;
   display: grid;
+  grid-template-rows: repeat(auto, 1fr);
+  gap:30px;
 }
+
+.grid-el {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-bottom: solid $light 1px;
+  height: 30px;
+}
+
+
 </style>

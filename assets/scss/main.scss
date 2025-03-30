@@ -1,26 +1,26 @@
 @use 'reset';
 @import 'https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Raleway:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap';
 
+.playfair, .raleway, .roboto {
+  font-optical-sizing: auto;
+  font-style: normal;
+  color: $white;
+
+}
+
 .playfair {
   font-family: $font-accent;
-  font-optical-sizing: auto;
   font-weight: 500;
-  font-style: normal;
 }
 
 .raleway {
   font-family: $font-main;
-  font-optical-sizing: auto;
   font-weight: 300;
-  font-style: normal;
 }
 
 .roboto {
   font-family: $font-external;
-  font-optical-sizing: auto;
   font-weight: 400;
-  font-style: normal;
-  font-variation-settings: 'wdth' 100;
 }
 
 body {
@@ -32,7 +32,6 @@ body {
   margin: 0 auto;
   padding: 0 15px;
   width: 1140px;
-  background-color: blue;
 }
 
 h3 {
@@ -49,26 +48,26 @@ span {
   line-height: 16px;
 }
 
-.text-1 {
-  font-size: 14px;
-  font-weight: 600;
-  line-height: 20px;
-  color: #dcdcdc;
-}
+// .text-1 {
+//   font-size: 14px;
+//   font-weight: 600;
+//   line-height: 20px;
+//   color: #dcdcdc;
+// }
 
-.text-2 {
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 24px;
-  color: #dcdcdc;
-}
+// .text-2 {
+//   font-size: 16px;
+//   font-weight: 400;
+//   line-height: 24px;
+//   color: #dcdcdc;
+// }
 
-.text-3 {
-  font-size: 18px;
-  font-weight: 500;
-  line-height: 24px;
-  color: #dcdcdc;
-}
+// .text-3 {
+//   font-size: 18px;
+//   font-weight: 500;
+//   line-height: 24px;
+//   color: #dcdcdc;
+// }
 
 input::placeholder {
   color: white;
