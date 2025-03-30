@@ -17,6 +17,7 @@
     "eslint-config-prettier": "^10.1.1",
     "eslint-plugin-nuxt": "^4.0.0",
     "eslint-plugin-prettier": "^5.2.5",
+    "lodash-es": "^4.17.21",
     "md5": "^2.3.0",
     "nuxt": "^3.16.1",
     "nuxt-auth-utils": "^0.5.17",

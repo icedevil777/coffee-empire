@@ -11,12 +11,14 @@ async function logout() {
 }
 
 const queryParams = ref({
-  id: '1',
-  status: 'dick',
-  search: 'piack',
+  id: '',
+  status: '',
+  search: '',
 });
 
 const { data, error, execute, refresh } = await useFetch('/api/users', { query: queryParams });
+
+
 </script>
 
 <template>
@@ -32,11 +34,11 @@ const { data, error, execute, refresh } = await useFetch('/api/users', { query: 
       <div class="filter">
         <div class="filter__div">
           <label class="filter__label">Search</label>
-          <input class="filter__search" placeholder="Name, email, surname ..." />
+          <input v-model="queryParams.search" class="filter__search" placeholder="Name, email, surname ..." />
         </div>
         <div class="filter__div">
           <label class="filter__label" for="filter__select">Status</label>
-          <select class="filter__select" id="filter__select">
+          <select v-model="queryParams.status" class="filter__select" id="filter__select">
             <option value="">All</option>
             <option value="confirmed">Confirmed</option>
             <option value="payed">Payed</option>
@@ -45,14 +47,14 @@ const { data, error, execute, refresh } = await useFetch('/api/users', { query: 
         </div>
         <div class="filter__div">
           <label class="filter__label" for="filter__select">Id</label>
-          <select class="filter__select" id="filter__select">
+          <select v-model="queryParams.id" class="filter__select" id="filter__select">
             <option value="">All</option>
             <option v-for="(i, key) in data.users" :value="key + 1">{{ key + 1 }}</option>
           </select>
         </div>
         <div class="filter__div">
           <label class="filter__label filter__label_hide">1</label>
-          <button class="filter__clean" @click="() => refresh()" type="button">Clean</button>
+          <button class="filter__clean" @click="() => refresh()" type="submit">Clean</button>
         </div>
       </div>
 
