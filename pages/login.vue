@@ -94,7 +94,6 @@ async function login() {
   }
 
   &__btn {
-
     @include btn-mix;
     margin-top: 20px;
     height: 40px;

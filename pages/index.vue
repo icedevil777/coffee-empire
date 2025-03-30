@@ -1,16 +1,22 @@
 <script setup lang="ts">
-const { user, clear: clearSession } = useUserSession();
+const { user, clear: cleanSession } = useUserSession();
 
 definePageMeta({
   middleware: ['authenticated'],
 });
 
 async function logout() {
-  await clearSession();
+  await cleanSession();
   await navigateTo('/login');
 }
 
-const { data } = await useFetch('/api/users');
+const queryParams = ref({
+  id: '1',
+  status: 'dick',
+  search: 'piack',
+});
+
+const { data, error, execute, refresh } = await useFetch('/api/users', { query: queryParams });
 </script>
 
 <template>
@@ -41,12 +47,12 @@ const { data } = await useFetch('/api/users');
           <label class="filter__label" for="filter__select">Id</label>
           <select class="filter__select" id="filter__select">
             <option value="">All</option>
-            <option v-for="i, key in data.users"  :value="key + 1" >{{ key + 1}}</option>
+            <option v-for="(i, key) in data.users" :value="key + 1">{{ key + 1 }}</option>
           </select>
         </div>
         <div class="filter__div">
           <label class="filter__label filter__label_hide">1</label>
-          <button class="filter__clear" type="button" >Clear</button>
+          <button class="filter__clean" @click="() => refresh()" type="button">Clean</button>
         </div>
       </div>
 
@@ -175,11 +181,11 @@ footer {
     }
   }
 
-  &__label_hide{
+  &__label_hide {
     color: $main;
   }
 
-  &__clear {
+  &__clean {
     @include input-mix;
     @include btn-mix;
 

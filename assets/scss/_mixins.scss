@@ -42,12 +42,10 @@
   display: block;
 }
 
-
 @mixin btn-mix {
   border: none !important;
   cursor: pointer;
   background-color: $red;
   color: white;
   border-radius: 10px;
-  
 }
