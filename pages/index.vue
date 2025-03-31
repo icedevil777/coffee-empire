@@ -62,7 +62,7 @@ function resetQueryParams() {
           </div>
           <div class="filter__div">
             <label class="filter__label filter__label_hide">1</label>
-            <button class="filter__clean" @click="() => resetQueryParams()" type="submit">Clean</button>
+            <button class="filter__clean" @click="() => resetQueryParams()" type="submit">Reset</button>
           </div>
         </div>
 
