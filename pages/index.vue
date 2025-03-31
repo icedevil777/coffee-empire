@@ -28,6 +28,7 @@ const { data, error, execute, refresh } = await useFetch('/api/users', { query: 
     </div>
   </header>
   <main class="main container">
+  <div class="main__stabilization">
     <div class="grid-content">
       <div class="filter">
         <div class="filter__div">
@@ -75,6 +76,7 @@ const { data, error, execute, refresh } = await useFetch('/api/users', { query: 
         <div class="grid-el__sub">{{ user.created }}</div>
       </div>
     </div>
+  </div>
   </main>
 
   <footer class="footer">
@@ -90,6 +92,10 @@ const { data, error, execute, refresh } = await useFetch('/api/users', { query: 
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
+  &__stabilization {
+    height: 540px;
+  }
 }
 
 .header,
