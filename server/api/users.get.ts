@@ -1,6 +1,7 @@
 import { useMainStore } from '~/stores/mainStore';
 import { createPinia } from 'pinia';
 import { z } from 'zod';
+import { searchUsers } from '~/utils';
 
 const pinia = createPinia();
 const store = useMainStore(pinia);
@@ -13,10 +14,16 @@ const querySchema = z.object({
 
 export default defineEventHandler(async (event) => {
   const { user } = await requireUserSession(event);
+  const query: Query = await getValidatedQuery(event, (body) => querySchema.safeParse(body));
+  let search, result;
 
-  const query = await getValidatedQuery(event, (body) => querySchema.safeParse(body));
-
-  console.log('query', query);
+  if (query.data) search = query.data.search;
+  if (search) {
+    result = searchUsers(search, store.users);
+    console.log('query', query);
+    console.log('result', result);
+    return { users: result };
+  }
 
   if (user) return { users: store.users };
 });

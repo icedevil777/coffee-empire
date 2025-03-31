@@ -17,8 +17,6 @@ const queryParams = ref({
 });
 
 const { data, error, execute, refresh } = await useFetch('/api/users', { query: queryParams });
-
-
 </script>
 
 <template>
@@ -34,7 +32,7 @@ const { data, error, execute, refresh } = await useFetch('/api/users', { query: 
       <div class="filter">
         <div class="filter__div">
           <label class="filter__label">Search</label>
-          <input v-model="queryParams.search" class="filter__search" placeholder="Name, email, surname ..." />
+          <input v-model="queryParams.search" class="filter__search" placeholder="Name, surname ..." />
         </div>
         <div class="filter__div">
           <label class="filter__label" for="filter__select">Status</label>
@@ -134,7 +132,7 @@ footer {
   color: $white;
   display: grid;
   grid-template-rows: repeat(auto, 1fr);
-  gap: 15px;
+  gap: 10px;
   @include roboto;
 }
 
