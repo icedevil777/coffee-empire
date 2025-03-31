@@ -17,6 +17,16 @@ const queryParams = ref({
 });
 
 const { data, error, execute, refresh } = await useFetch('/api/users', { query: queryParams });
+
+function resetQueryParams() {
+  queryParams.value = {
+    id: '',
+    status: '',
+    search: '',
+  };
+  refresh()
+}
+
 </script>
 
 <template>
@@ -48,12 +58,12 @@ const { data, error, execute, refresh } = await useFetch('/api/users', { query: 
           <label class="filter__label" for="filter__select">Id</label>
           <select v-model="queryParams.id" class="filter__select" id="filter__select">
             <option value="">All</option>
-            <option v-for="(i, key) in data.users" :value="key + 1">{{ key + 1 }}</option>
+            <option v-for="i in 10" :value="i">{{ i }}</option>
           </select>
         </div>
         <div class="filter__div">
           <label class="filter__label filter__label_hide">1</label>
-          <button class="filter__clean" @click="() => refresh()" type="submit">Clean</button>
+          <button class="filter__clean" @click="() => resetQueryParams()" type="submit">Clean</button>
         </div>
       </div>
 
@@ -95,6 +105,7 @@ const { data, error, execute, refresh } = await useFetch('/api/users', { query: 
 
   &__stabilization {
     height: 540px;
+    width: 996px;
   }
 }
 
