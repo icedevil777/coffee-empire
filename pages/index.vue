@@ -24,9 +24,8 @@ function resetQueryParams() {
     status: '',
     search: '',
   };
-  refresh()
+  refresh();
 }
-
 </script>
 
 <template>
@@ -38,55 +37,55 @@ function resetQueryParams() {
     </div>
   </header>
   <main class="main container">
-  <div class="main__stabilization">
-    <div class="grid-content">
-      <div class="filter">
-        <div class="filter__div">
-          <label class="filter__label">Search</label>
-          <input v-model="queryParams.search" class="filter__search" placeholder="Name, surname ..." />
+    <div class="main__stabilization">
+      <div class="grid-content">
+        <div class="filter">
+          <div class="filter__div">
+            <label class="filter__label">Search</label>
+            <input v-model="queryParams.search" class="filter__search" placeholder="Name, surname ..." />
+          </div>
+          <div class="filter__div">
+            <label class="filter__label" for="filter__select">Status</label>
+            <select v-model="queryParams.status" class="filter__select" id="filter__select">
+              <option value="">All</option>
+              <option value="confirmed">Confirmed</option>
+              <option value="payed">Payed</option>
+              <option value="active">Active</option>
+            </select>
+          </div>
+          <div class="filter__div">
+            <label class="filter__label" for="filter__select">Id</label>
+            <select v-model="queryParams.id" class="filter__select" id="filter__select">
+              <option value="">All</option>
+              <option v-for="i in 10" :value="i">{{ i }}</option>
+            </select>
+          </div>
+          <div class="filter__div">
+            <label class="filter__label filter__label_hide">1</label>
+            <button class="filter__clean" @click="() => resetQueryParams()" type="submit">Clean</button>
+          </div>
         </div>
-        <div class="filter__div">
-          <label class="filter__label" for="filter__select">Status</label>
-          <select v-model="queryParams.status" class="filter__select" id="filter__select">
-            <option value="">All</option>
-            <option value="confirmed">Confirmed</option>
-            <option value="payed">Payed</option>
-            <option value="active">Active</option>
-          </select>
-        </div>
-        <div class="filter__div">
-          <label class="filter__label" for="filter__select">Id</label>
-          <select v-model="queryParams.id" class="filter__select" id="filter__select">
-            <option value="">All</option>
-            <option v-for="i in 10" :value="i">{{ i }}</option>
-          </select>
-        </div>
-        <div class="filter__div">
-          <label class="filter__label filter__label_hide">1</label>
-          <button class="filter__clean" @click="() => resetQueryParams()" type="submit">Clean</button>
-        </div>
-      </div>
 
-      <div class="line"></div>
+        <div class="line"></div>
 
-      <div class="grid-el">
-        <div class="grid-el__sub">Id</div>
-        <div class="grid-el__sub">Name</div>
-        <div class="grid-el__sub">Surname</div>
-        <div class="grid-el__sub">Email</div>
-        <div class="grid-el__sub">Status</div>
-        <div class="grid-el__sub">Created</div>
-      </div>
-      <div v-if="data.users" class="grid-el" v-for="user in data.users">
-        <div class="grid-el__sub">{{ user.id }}</div>
-        <div class="grid-el__sub">{{ user.name }}</div>
-        <div class="grid-el__sub">{{ user.surname }}</div>
-        <div class="grid-el__sub">{{ user.credentials.username }}</div>
-        <div class="grid-el__sub">{{ user.status }}</div>
-        <div class="grid-el__sub">{{ user.created }}</div>
+        <div class="grid-el">
+          <div class="grid-el__sub">Id</div>
+          <div class="grid-el__sub">Name</div>
+          <div class="grid-el__sub">Surname</div>
+          <div class="grid-el__sub">Email</div>
+          <div class="grid-el__sub">Status</div>
+          <div class="grid-el__sub">Created</div>
+        </div>
+        <div v-if="data.users" class="grid-el" v-for="user in data.users">
+          <div class="grid-el__sub">{{ user.id }}</div>
+          <div class="grid-el__sub">{{ user.name }}</div>
+          <div class="grid-el__sub">{{ user.surname }}</div>
+          <div class="grid-el__sub">{{ user.credentials.username }}</div>
+          <div class="grid-el__sub">{{ user.status }}</div>
+          <div class="grid-el__sub">{{ user.created }}</div>
+        </div>
       </div>
     </div>
-  </div>
   </main>
 
   <footer class="footer">
