@@ -2,20 +2,6 @@ import usersData from './users.json';
 import { defineStore } from 'pinia';
 import md5 from 'md5';
 
-interface Credentials {
-  username: string;
-  passphrase: string;
-}
-
-interface User {
-  name: string;
-  surname: string;
-  credentials: Credentials;
-  active: boolean;
-  created: string;
-  _comment: string;
-}
-
 const users: Array<User> = usersData;
 
 export const useMainStore = defineStore('mainStore', {

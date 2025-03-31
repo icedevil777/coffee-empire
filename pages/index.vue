@@ -1,16 +1,31 @@
 <script setup lang="ts">
-const { user, clear: clearSession } = useUserSession();
+const { user, clear: cleanSession } = useUserSession();
 
 definePageMeta({
   middleware: ['authenticated'],
 });
 
 async function logout() {
-  await clearSession();
+  await cleanSession();
   await navigateTo('/login');
 }
 
-const { data } = await useFetch('/api/users');
+const queryParams = ref({
+  id: '',
+  status: '',
+  search: '',
+});
+
+const { data, error, execute, refresh } = await useFetch('/api/users', { query: queryParams });
+
+function resetQueryParams() {
+  queryParams.value = {
+    id: '',
+    status: '',
+    search: '',
+  };
+  refresh();
+}
 </script>
 
 <template>
@@ -21,17 +36,54 @@ const { data } = await useFetch('/api/users');
       <button class="header__logout" @click="logout">Log out</button>
     </div>
   </header>
-  <main class="main">
-    <div class="container grid-content">
-      <div class="grid-el">
-        <div class="grid-el__sub">Name</div>
-        <div class="grid-el__sub">Surname name</div>
-        <div class="grid-el__sub">Email</div>
-      </div>
-      <div v-if="data.users" class="grid-el" v-for="user in data.users">
-        <div class="grid-el__sub">{{ user.name }}</div>
-        <div class="grid-el__sub">{{ user.surname }}</div>
-        <div class="grid-el__sub">{{ user.credentials.username }}</div>
+  <main class="main container">
+    <div class="main__stabilization">
+      <div class="grid-content">
+        <div class="filter">
+          <div class="filter__div">
+            <label class="filter__label">Search</label>
+            <input v-model="queryParams.search" class="filter__search" placeholder="Name, surname ..." />
+          </div>
+          <div class="filter__div">
+            <label class="filter__label" for="filter__select">Status</label>
+            <select v-model="queryParams.status" class="filter__select" id="filter__select">
+              <option value="">All</option>
+              <option value="confirmed">Confirmed</option>
+              <option value="payed">Payed</option>
+              <option value="active">Active</option>
+            </select>
+          </div>
+          <div class="filter__div">
+            <label class="filter__label" for="filter__select">Id</label>
+            <select v-model="queryParams.id" class="filter__select" id="filter__select">
+              <option value="">All</option>
+              <option v-for="i in 10" :value="i">{{ i }}</option>
+            </select>
+          </div>
+          <div class="filter__div">
+            <label class="filter__label filter__label_hide">1</label>
+            <button class="filter__clean" @click="() => resetQueryParams()" type="submit">Clean</button>
+          </div>
+        </div>
+
+        <div class="line"></div>
+
+        <div class="grid-el">
+          <div class="grid-el__sub">Id</div>
+          <div class="grid-el__sub">Name</div>
+          <div class="grid-el__sub">Surname</div>
+          <div class="grid-el__sub">Email</div>
+          <div class="grid-el__sub">Status</div>
+          <div class="grid-el__sub">Created</div>
+        </div>
+        <div v-if="data.users" class="grid-el" v-for="user in data.users">
+          <div class="grid-el__sub">{{ user.id }}</div>
+          <div class="grid-el__sub">{{ user.name }}</div>
+          <div class="grid-el__sub">{{ user.surname }}</div>
+          <div class="grid-el__sub">{{ user.credentials.username }}</div>
+          <div class="grid-el__sub">{{ user.status }}</div>
+          <div class="grid-el__sub">{{ user.created }}</div>
+        </div>
       </div>
     </div>
   </main>
@@ -46,7 +98,14 @@ const { data } = await useFetch('/api/users');
 .main {
   height: $main-h;
   display: flex;
+  flex-direction: column;
   align-items: center;
+  justify-content: center;
+
+  &__stabilization {
+    height: 540px;
+    width: 996px;
+  }
 }
 
 .header,
@@ -89,18 +148,66 @@ footer {
   color: $white;
   display: grid;
   grid-template-rows: repeat(auto, 1fr);
-  gap: 30px;
+  gap: 10px;
   @include roboto;
 }
 
 .grid-el {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: 50px repeat(2, 1fr) 300px repeat(2, 1fr);
   border-bottom: solid $light 1px;
-  height: 30px;
+  // height: 30px;
 }
 
 .logo {
   @include playfair;
+}
+
+.line {
+  border-top: solid $white 1px;
+  margin-bottom: 5px;
+}
+
+.filter {
+  background-color: $main;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+
+  &__search {
+    @include input-mix;
+
+    &:focus {
+      border-color: $red;
+    }
+  }
+
+  &__div {
+    display: flex;
+    flex-direction: column;
+    min-width: 200px;
+  }
+
+  &__select {
+    @include input-mix;
+    cursor: pointer;
+
+    &:focus {
+      border-color: $red;
+    }
+  }
+
+  &__label_hide {
+    color: $main;
+  }
+
+  &__clean {
+    @include input-mix;
+    @include btn-mix;
+
+    &:hover {
+      opacity: 85%;
+    }
+  }
 }
 </style>

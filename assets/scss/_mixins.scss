@@ -11,8 +11,8 @@
 
   font-family: $font-accent;
   font-weight: 500;
-  font-size: 30px;
-  line-height: 35px;
+  font-size: 28px;
+  line-height: 25px;
 }
 
 @mixin raleway {
@@ -31,4 +31,21 @@
   font-weight: 400;
   font-size: 16px;
   line-height: 25px;
+}
+
+@mixin input-mix {
+  background-color: $main;
+  height: 40px;
+  border: solid $light 1px;
+  padding: 0 12px 0 10px;
+  border-radius: 5px;
+  display: block;
+}
+
+@mixin btn-mix {
+  border: none !important;
+  cursor: pointer;
+  background-color: $red;
+  color: white;
+  border-radius: 10px;
 }
